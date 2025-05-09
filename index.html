@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de Películas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://images.unsplash.com/photo-1581905764498-0b8da6037a36') center/cover fixed;
+    }
+    .overlay {
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .movie-img {
+      width: 50px;
+      border-radius: 5px;
+    }
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container overlay">
+    <div class="d-flex align-items-center mb-4">
+      <img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png"
+           alt="Logo Catálogo" class="me-3 logo-icon">
+      <h1 class="mb-0">Catálogo de Películas</h1>
+    </div>
+    <p class="lead">
+      Bienvenido al catálogo de películas. Aquí encontrarás una lista de títulos destacados, su año de lanzamiento y detalles clave.
+    </p>
+
+    <div class="mb-4">
+      <button id="openAddModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">
+        Agregar nueva película
+      </button>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <input type="number" id="searchById" class="form-control" placeholder="Buscar por ID">
+      </div>
+      <div class="col-md-6 mt-3 mt-md-0">
+        <input type="text" id="searchByTitle" class="form-control" placeholder="Buscar por Título">
+      </div>
+    </div>
+
+    <div class="table-responsive d-flex justify-content-center">
+      <table id="movieTable" class="table table-bordered table-hover align-middle mx-auto">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Año</th>
+            <th>Portada</th>
+            <th>Fecha Creación</th>
+            <th>Fecha Modificación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas iniciales -->
+          <tr>
+            <td>1</td>
+            <td>Nulla numquam amet.</td>
+            <td>Facere accusamus doloremque maiores totam a...</td>
+            <td>2007</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png"
+                     class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Similique natus et.</td>
+            <td>Velit voluptates excepturi repudiandae ut aut...</td>
+            <td>2006</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png"
+                     class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Aut ipsam aspernatur quia.</td>
+            <td>Numquam dolorem et asperiores. Et dolores dig...</td>
+            <td>1995</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png"
+                     class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+            <td>4</td>
+            <td>Atque sit animi consequuntur.</td>
+            <td>Dicta enim nobis voluptatem laboriosam offici...</td>
+            <td>2025</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Fugit nostrum perspiciatis dolorem natus.</td>
+            <td>Blanditiis nihil et quaerat dolores. Expedit...</td>
+            <td>1990</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Nulla voluptas qui aut.</td>
+            <td>Ratione dignissimos magni sint magnam volupta...</td>
+            <td>2012</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Nostrum et expedita nulla excepturi.</td>
+            <td>Eaque velit dolorum est alias. Cupiditate dele...</td>
+            <td>1977</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Dolore repudiandae veniam sint.</td>
+            <td>Voluptas nihil unde odit est animi qui quibusd...</td>
+            <td>1994</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Consequatur et eos rerum.</td>
+            <td>Doloribus sit numquam sunt nihil reprehenderit...</td>
+            <td>1979</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Asperiores accusamus.</td>
+            <td>Aut voluptas enim sunt voluptates nobis except...</td>
+            <td>2013</td>
+            <td><img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png" class="movie-img" alt="Portada"></td>
+            <td>2025-03-12 17:06:28</td>
+            <td>2025-03-12 17:06:28</td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="text-center mt-4">
+      <hr>
+      <p>
+        <strong>Materia:</strong> Conceptualización de entornos de desarrollo de aplicaciones y servicios
+      </p>
+      <p>
+        <strong>Nombre:</strong> Eduardo Ceja Robles |
+        <strong>Código:</strong> 223371693 |
+        <strong>Correo:</strong>
+        <a href="mailto:eduardo.ceja@udgvirtual.udg.mx">eduardo.ceja@udgvirtual.udg.mx</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Modal para agregar película -->
+  <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addMovieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="addMovieForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addMovieModalLabel">Agregar Nueva Película</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="movieTitle" class="form-label">Título</label>
+              <input type="text" class="form-control" id="movieTitle" required>
+            </div>
+            <div class="mb-3">
+              <label for="movieDescription" class="form-label">Descripción</label>
+              <textarea class="form-control" id="movieDescription" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="movieYear" class="form-label">Año</label>
+              <input type="number" class="form-control" id="movieYear" required>
+            </div>
+            <div class="mb-3">
+              <label for="creationDate" class="form-label">Fecha de Creación</label>
+              <input type="datetime-local" class="form-control" id="creationDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="modificationDate" class="form-label">Fecha de Modificación</label>
+              <input type="datetime-local" class="form-control" id="modificationDate" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchById = document.getElementById('searchById');
+      const searchByTitle = document.getElementById('searchByTitle');
+      const tableBody = document.querySelector('#movieTable tbody');
+      const addMovieForm = document.getElementById('addMovieForm');
+
+      const filterTable = () => {
+        const idVal = searchById.value.trim();
+        const titleVal = searchByTitle.value.trim().toLowerCase();
+        tableBody.querySelectorAll('tr').forEach(row => {
+          const cells = row.children;
+          const matches = 
+            (!idVal || cells[0].textContent.trim() === idVal) &&
+            (!titleVal || cells[1].textContent.trim().toLowerCase().includes(titleVal));
+          row.style.display = matches ? '' : 'none';
+        });
+      };
+      searchById.addEventListener('input', filterTable);
+      searchByTitle.addEventListener('input', filterTable);
+
+      // Delegación para eliminar
+      tableBody.addEventListener('click', e => {
+        if (e.target.classList.contains('delete-btn')) {
+          e.target.closest('tr').remove();
+        }
+      });
+
+      addMovieForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const lastRow = tableBody.lastElementChild;
+        const newId = lastRow
+          ? parseInt(lastRow.firstElementChild.textContent) + 1
+          : 1;
+        const values = [
+          newId,
+          document.getElementById('movieTitle').value,
+          document.getElementById('movieDescription').value,
+          document.getElementById('movieYear').value,
+          `<img src="https://w7.pngwing.com/pngs/128/992/png-transparent-cinema-icons-marker-matt-movie-scene-slate-symbol-gray-movie.png"
+                class="movie-img" alt="Portada">`,
+          document.getElementById('creationDate').value.replace('T', ' '),
+          document.getElementById('modificationDate').value.replace('T', ' ')
+        ];
+        const tr = document.createElement('tr');
+        values.forEach(val => {
+          const td = document.createElement('td');
+          td.innerHTML = val;
+          tr.appendChild(td);
+        });
+        const actionTd = document.createElement('td');
+        actionTd.innerHTML = `<button class="btn btn-danger btn-sm delete-btn">Eliminar</button>`;
+        tr.appendChild(actionTd);
+        tableBody.appendChild(tr);
+        bootstrap.Modal.getInstance(
+          document.getElementById('addMovieModal')
+        ).hide();
+        addMovieForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>
