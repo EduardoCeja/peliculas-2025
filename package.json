@@ -1,0 +1,12 @@
+{
+  "name": "movie-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "firebase": "^11.7.1",
+    "serve": "^14.0.1"
+  }
+}
