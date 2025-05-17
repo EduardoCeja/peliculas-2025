@@ -27,7 +27,7 @@ onSnapshot(moviesCol, snapshot => {
     tr.dataset.id = docSnap.id;
     tr.innerHTML = `
       <td>${data.id}</td>
-      <td>${data.title}</td>
+      <td> <span class="details-link">${data.title}</span></td>
       <td>${data.description}</td>
       <td>${data.year}</td>
       <td><img src="${data.coverUrl}" class="movie-img"></td>
@@ -106,3 +106,4 @@ const applyFilters = () => {
 };
 searchById.addEventListener('input',    applyFilters);
 searchByTitle.addEventListener('input', applyFilters);
+
