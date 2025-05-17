@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "chmod +x node_modules/.bin/serve",
-    "start":       "serve -s . -l $PORT"
+     "start": "node server.js"
   },
   "dependencies": {
-    "firebase": "^11.7.1",
-    "serve":   "^14.0.1"
+    "express": "^4.18.2",
+    "firebase": "^11.7.1"
   }
 }
